@@ -12,7 +12,7 @@ public:
     [[nodiscard, maybe_unused]] inline uint32 GetSize() const { return m_Size; }
 private:
     void DFS(vec2 position);
-    [[nodiscard]] vec2 FindFarthestFromA();
+    [[nodiscard]] vec2 FindFarthestFromA() const;
     [[nodiscard]] bool IsValid(vec2 position) const;
 
     void SetAt(vec2 position, char value);

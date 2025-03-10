@@ -1,6 +1,7 @@
 #include "Core/Launch/Application.h"
 #include "Graphics/Renderer2D/Renderer2D.h"
 #include "World/World/World.h"
+#include "Input/Input.h"
 
 Application::Application(CommandLineArgs args)
 {
@@ -14,10 +15,6 @@ void Application::Run()
 
     Renderer2D::Init();
 
-    Camera camera;
-    camera.SetViewportSize(800, 600);
-    camera.SetOrthographic(30, 0, 10);
-
     World world;
     world.Init();
 
@@ -25,10 +22,11 @@ void Application::Run()
     {
         m_pWindow->OnUpdate();
         m_pWindow->Clear();
-        camera.OnUpdate();
-        Renderer2D::BeginScene(camera);
+
         world.OnUpdate();
-        Renderer2D::EndScene();
+        world.OnRender();
+
+        Input::OnUpdate();
     }
 
     Renderer2D::Shutdown();

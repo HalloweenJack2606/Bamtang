@@ -1,4 +1,5 @@
 #include "Core/Window/Window.h"
+#include "Input/Input.h"
 
 static void GLFWErrorCallback(int error, const char* desc)
 {
@@ -8,6 +9,7 @@ static void GLFWErrorCallback(int error, const char* desc)
 void Window::Init(const WindowData& data)
 {
     m_Data = data;
+    m_Data.KeyCodeFunc = Input::OnKeyEvent;
     auto success = glfwInit();
     if(!success)
     {
@@ -36,6 +38,13 @@ void Window::Init(const WindowData& data)
     {
         std::cout << "Could not initialize GLEW" << std::endl;
     }
+
+    glfwSetWindowUserPointer(m_pWindow, &m_Data);
+
+    glfwSetKeyCallback(m_pWindow, [](GLFWwindow* pWindow, int32 keycode, int32 scancode, int32 action, int32 mods) {
+        WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+        data.KeyCodeFunc(keycode, action);
+    });
 }
 
 void Window::OnUpdate()

@@ -3,14 +3,13 @@
 #include <GL/glew.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-constexpr static uint32 maxQuads = 1000;
+constexpr static uint32 maxQuads = 20000;
 constexpr static uint32 maxVertices = maxQuads * 4;
 constexpr static uint32 maxIndices = maxQuads * 6;
 constexpr static uint32 vboAllocationSize = sizeof(QuadVertex) * maxVertices;
 
 void Renderer2D::Init()
 {
-    s_Shader.Init("assets/shaders/quad.glsl");
     s_QuadVertexBufferBase = new QuadVertex[maxVertices];
 
     glEnable(GL_BLEND);
@@ -31,10 +30,13 @@ void Renderer2D::Init()
     s_QuadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
 
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const void*)offsetof(QuadVertex, Position));
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const void*)offsetof(QuadVertex, Position));
 
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const void*)offsetof(QuadVertex, Color));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const void*)offsetof(QuadVertex, TextureCoords));
+
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const void*)offsetof(QuadVertex, Color));
 
     auto* quadIndices = new uint32[maxIndices];
 
@@ -78,6 +80,8 @@ void Renderer2D::BeginScene(const Camera& camera)
 
 void Renderer2D::DrawQuad(const vec2 position, vec2 size, const vec4 color)
 {
+    static constexpr vec2 texCoords[] = {{0.0f, 0.0f}, {1.0f, 0.0f}, {1.0f, 1.0f}, {0.0f, 1.0f}};
+
     static constexpr uint32 quadVertexCount = 4;
 
     mat4 transform = glm::translate(mat4(1.0f), vec3(position, 0.0f)) * glm::scale(mat4(1.0f), vec3(size, 1.0f));
@@ -85,6 +89,7 @@ void Renderer2D::DrawQuad(const vec2 position, vec2 size, const vec4 color)
     for(uint32 i = 0; i < quadVertexCount; i++)
     {
         s_QuadVertexBufferPtr->Position = transform * s_QuadVertexPositions[i];
+        s_QuadVertexBufferPtr->TextureCoords = texCoords[i];
         s_QuadVertexBufferPtr->Color = color;
         s_QuadVertexBufferPtr++;
     }

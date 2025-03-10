@@ -27,5 +27,16 @@ layout(location = 0) out vec4 color;
 
 void main()
 {
-	color = v_Output_Color;
+	vec2 uv = v_Output_TexCoord * 2.0 - 1.0;
+	float thickness = 1.0;
+	float fade = 0.05;
+
+	float distance = 1.0 - length(uv);
+	vec3 col = vec3(smoothstep(0.0, fade, distance));
+	col *= vec3(smoothstep(thickness + fade, thickness, distance));
+
+	if(col.rgb == vec3(0.0)) discard;
+
+	color = vec4(col, 1.0) * v_Output_Color;
+	//color = vec4(vec3(gl_FragCoord.z), 1.0);
 }

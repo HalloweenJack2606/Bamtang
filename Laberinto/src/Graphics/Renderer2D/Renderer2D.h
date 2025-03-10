@@ -5,7 +5,8 @@
 
 struct QuadVertex
 {
-    vec2 Position;
+    vec4 Position;
+    vec2 TextureCoords;
     vec4 Color;
 };
 
@@ -14,6 +15,8 @@ class Renderer2D
 public:
     static void Init();
     static void Shutdown();
+
+    static void SetShader(Shader& shader) { s_Shader = shader; }
 
     static void BeginScene(const Camera& camera);
     static void EndScene();

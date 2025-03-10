@@ -15,6 +15,8 @@ public:
 
     void OnUpdate();
 
+    inline void SetPosition(vec3 position) { m_Position = position; }
+
     void SetPerspective(float verticalFOV, float nearClip, float farClip);
     void SetOrthographic(float size, float nearClip, float farClip);
 

@@ -10,6 +10,8 @@ struct WindowData
     uint32 Width;
     uint32 Height;
     bool bResizable;
+
+    std::function<void(int32, int32)> KeyCodeFunc;
 };
 
 class Window

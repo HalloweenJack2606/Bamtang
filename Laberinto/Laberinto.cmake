@@ -52,7 +52,6 @@ if(CMAKE_BUILD_TYPE STREQUAL Debug)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL Release)
-  add_dependencies("Laberinto")
   set_target_properties("Laberinto" PROPERTIES
           OUTPUT_NAME "Laberinto"
           ARCHIVE_OUTPUT_DIRECTORY "bin/Release-macosx-arm/Laberinto"

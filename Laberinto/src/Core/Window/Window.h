@@ -17,6 +17,7 @@ class Window
 public:
     void Init(const WindowData& data);
     void OnUpdate();
+    void Clear();
 
     [[nodiscard]] inline bool ShouldClose() const noexcept { return m_bShouldClose; }
 private:

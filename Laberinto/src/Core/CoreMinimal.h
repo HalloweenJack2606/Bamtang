@@ -4,6 +4,8 @@
 #include "HAL/PlatformDetection.h"
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 #if PLATFORM_APPLE
     #include <stddef.h> //needed for size_t

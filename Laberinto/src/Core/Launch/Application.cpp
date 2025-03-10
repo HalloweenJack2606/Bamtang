@@ -1,5 +1,6 @@
 #include "Core/Launch/Application.h"
 #include "Graphics/Renderer2D/Renderer2D.h"
+#include "World/World/World.h"
 
 Application::Application(CommandLineArgs args)
 {
@@ -15,7 +16,10 @@ void Application::Run()
 
     Camera camera;
     camera.SetViewportSize(800, 600);
-    camera.SetOrthographic(10, 0, 10);
+    camera.SetOrthographic(30, 0, 10);
+
+    World world;
+    world.Init();
 
     while(!m_pWindow->ShouldClose())
     {
@@ -23,12 +27,7 @@ void Application::Run()
         m_pWindow->Clear();
         camera.OnUpdate();
         Renderer2D::BeginScene(camera);
-        vec2 position = vec2(0.0f);
-        vec2 size = vec2(1.0f);
-        Renderer2D::DrawQuad(position, size, Colors::Red());
-        vec2 position2 = vec2(1);
-        vec2 size2 = vec2(0.5f);
-        Renderer2D::DrawQuad(position2, size2, Colors::Green());
+        world.OnUpdate();
         Renderer2D::EndScene();
     }
 

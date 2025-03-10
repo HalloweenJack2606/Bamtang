@@ -105,8 +105,6 @@ void Renderer2D::Flush()
     }
 }
 
-
-
 void Renderer2D::EndScene()
 {
     Flush();

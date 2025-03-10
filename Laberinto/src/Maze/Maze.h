@@ -4,15 +4,15 @@
 typedef uint32_t uint32;
 typedef int32_t int32;
 
-struct iVec2
+struct vec2
 {
-    int32 x;
-    int32 y;
+    float x;
+    float y;
 };
 
-inline iVec2 operator+(const iVec2& lhs, const iVec2& rhs)
+inline vec2 operator+(const vec2& lhs, const vec2& rhs)
 {
-    return iVec2(lhs.x + rhs.x, lhs.y + rhs.y);
+    return vec2(lhs.x + rhs.x, lhs.y + rhs.y);
 }
 
 class Maze
@@ -21,19 +21,20 @@ public:
     void Generate(uint32 size);
     void Print() const;
 
+    [[nodiscard]] char At(vec2 position) const;
+
     [[nodiscard, maybe_unused]] inline uint32 GetSize() const { return m_Size; }
 private:
-    void DFS(iVec2 position);
-    [[nodiscard]] iVec2 FindFarthestFromA();
-    [[nodiscard]] bool IsValid(iVec2 position) const;
+    void DFS(vec2 position);
+    [[nodiscard]] vec2 FindFarthestFromA() const;
+    [[nodiscard]] bool IsValid(vec2 position) const;
 
-    [[nodiscard]] char At(iVec2 position) const;
-    void SetAt(iVec2 position, char value);
+    void SetAt(vec2 position, char value);
 public:
     typedef std::vector<std::vector<char>> MazeData;
     MazeData data;
 private:
-    typedef std::vector<iVec2> Directions;
+    typedef std::vector<vec2> Directions;
     Directions m_Directions = {{0, 2}, {0, -2}, {2, 0}, {-2, 0}};
 
     uint32 m_Size = 0;

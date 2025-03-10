@@ -1,4 +1,4 @@
-#include "Maze/Maze.h"
+#include "Maze.h"
 #include <random>
 
 std::random_device g_RD;
@@ -16,18 +16,7 @@ void Maze::Print() const
     }
 }
 
-void Maze::Generate(uint32 size)
-{
-    m_Size = size;
-    data.assign(m_Size, std::vector<char>(m_Size, '*'));
-    auto start = iVec2(1, 1);
-    DFS(start);
-    iVec2 end = FindFarthestFromA();
-    SetAt(end, 'B');
-    SetAt(start, 'A');
-}
-
-void Maze::DFS(iVec2 position)
+void Maze::DFS(vec2 position)
 {
     const auto x = position.x;
     const auto y = position.y;
@@ -35,54 +24,78 @@ void Maze::DFS(iVec2 position)
     std::shuffle(std::begin(m_Directions), std::end(m_Directions), g_RNG);
     for (const auto& dir : m_Directions)
     {
-        iVec2 newPosition = position + dir;
+        vec2 newPosition = position + dir;
         if (IsValid(newPosition))
         {
-            SetAt(iVec2(x + dir.x / 2, y + dir.y / 2), ' ');
+            SetAt(vec2(x + dir.x / 2, y + dir.y / 2), ' ');
             DFS(newPosition);
         }
     }
 }
 
-iVec2 Maze::FindFarthestFromA()
+void Maze::Generate(uint32 size)
 {
-    std::vector<std::vector<uint32>> matrix(m_Size, std::vector<uint32>(m_Size, -1));
-    matrix[1][1] = 0;
-    std::vector<iVec2> queue = {{1, 1}};
-    iVec2 farthest = {1, 1};
+    m_Size = size;
+    data.assign(m_Size, std::vector<char>(m_Size, '*'));
+    auto start = vec2(1, 1);
+    DFS(start);
+    vec2 end = FindFarthestFromA();
+    SetAt(start, 'A');
+    SetAt(end, 'B');
+}
 
-    for (size_t i = 0; i < queue.size(); i++)
+vec2 Maze::FindFarthestFromA() const
+{
+    vec2 start = {1, 1};
+
+    std::vector<std::vector<uint32>> distances(m_Size, std::vector<uint32>(m_Size, -1));
+    distances[start.x][start.y] = 0;
+
+    std::queue<vec2> queue;
+    queue.push(start);
+
+    vec2 furthestPoint = start;
+    uint32 maxDistance = 0;
+
+    while (!queue.empty())
     {
-        iVec2 current = queue[i];
-        for (const auto& [dirX, dirY] : m_Directions)
+        vec2 current = queue.front();
+        queue.pop();
+        static constexpr const vec2 directions[4] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+        for (int i = 0; i < 4; i++)
         {
-            int32 nextX = current.x + dirX;
-            int32 nextY = current.y + dirY;
-            if (nextX > 0 && nextY > 0 && nextX < m_Size && nextY < m_Size && data[nextX][nextY] == ' ' && matrix[nextX][nextY] == -1)
+            vec2 next = {current.x + directions[i].x, current.y + directions[i].y};
+
+            if (next.x >= 0 && next.x < m_Size && next.y >= 0 && next.y < m_Size &&
+                data[next.x][next.y] == ' ' && distances[next.x][next.y] == -1)
             {
-                matrix[nextX][nextY] = matrix[current.x][current.y] + 1;
-                queue.push_back({nextX, nextY});
-                if (matrix[nextX][nextY] > matrix[farthest.x][farthest.y])
+                distances[next.x][next.y] = distances[current.x][current.y] + 1;
+                queue.push(next);
+
+                if (distances[next.x][next.y] > maxDistance)
                 {
-                    farthest = {nextX, nextY};
+                    maxDistance = distances[next.x][next.y];
+                    furthestPoint = next;
                 }
             }
         }
     }
-    return farthest;
+
+    return furthestPoint;
 }
 
-bool Maze::IsValid(iVec2 position) const
+bool Maze::IsValid(vec2 position) const
 {
     return position.x > 0 && position.x < m_Size - 1 && position.y > 0 && position.y < m_Size - 1 && this->At(position) == '*';
 }
 
-void Maze::SetAt(iVec2 position, const char value)
+void Maze::SetAt(vec2 position, const char value)
 {
     data[position.x][position.y] = value;
 }
 
-char Maze::At(iVec2 position) const
+char Maze::At(vec2 position) const
 {
     return data[position.x][position.y];
 }

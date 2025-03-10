@@ -19,12 +19,19 @@
  * directorios
  */
 
-#include "Core/Launch/Application.h"
+#include "Maze/Maze.h"
 
-int main(int argc, char** argv)
+Maze createMaze2D(uint32 size)
 {
-    auto app = new Application({argc, argv});
-    app->Run();
-    delete app;
+    Maze maze;
+    maze.Generate(size);
+    return maze;
+}
+
+int main()
+{
+    uint32 size = 11;
+    Maze maze = createMaze2D(size);
+    maze.Print();
     return 0;
 }

@@ -1,0 +1,13 @@
+# macOS system files
+.DS_Store
+
+# JetBrains IDE files
+.idea/
+
+# Specific paths for macOS system files
+laberinto/.DS_Store
+laberinto/assets/.DS_Store
+laberinto/vendor/.DS_Store
+
+# Build directory
+cmake-build-debug/

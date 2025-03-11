@@ -5,17 +5,13 @@
 
 constexpr static uint32 maxQuads = 20000;
 constexpr static uint32 maxVertices = maxQuads * 4;
-constexpr static uint32 maxIndices = maxQuads * 6;
+constexpr static uint32 indexCount = 6;
+constexpr static uint32 maxIndices = maxQuads * indexCount;
 constexpr static uint32 vboAllocationSize = sizeof(QuadVertex) * maxVertices;
 
 void Renderer2D::Init()
 {
     s_QuadVertexBufferBase = new QuadVertex[maxVertices];
-
-    glEnable(GL_BLEND);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glGenVertexArrays(1, &s_QuadVAO);
     glBindVertexArray(s_QuadVAO);
@@ -93,6 +89,8 @@ void Renderer2D::DrawQuad(const vec2 position, vec2 size, const vec4 color)
         s_QuadVertexBufferPtr->Color = color;
         s_QuadVertexBufferPtr++;
     }
+
+    s_QuadCount++;
 }
 
 void Renderer2D::Flush()
@@ -105,7 +103,7 @@ void Renderer2D::Flush()
 
         s_Shader.Bind();
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, s_QuadIBO);
-        glDrawElements(GL_TRIANGLES, maxIndices, GL_UNSIGNED_INT, nullptr);
+        glDrawElements(GL_TRIANGLES, s_QuadCount * indexCount, GL_UNSIGNED_INT, nullptr);
         s_Shader.Unbind();
     }
 }

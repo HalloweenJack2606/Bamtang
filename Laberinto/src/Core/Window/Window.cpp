@@ -10,6 +10,7 @@ void Window::Init(const WindowData& data)
 {
     m_Data = data;
     m_Data.KeyCodeFunc = Input::OnKeyEvent;
+    m_Data.MousePosFun = Input::OnMousePositionEvent;
     auto success = glfwInit();
     if(!success)
     {
@@ -45,6 +46,18 @@ void Window::Init(const WindowData& data)
         WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
         data.KeyCodeFunc(keycode, action);
     });
+
+    glfwSetCursorPosCallback(m_pWindow, [](GLFWwindow* pWindow, double xpos, double ypos) {
+        WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+        data.MousePosFun(xpos, ypos);
+    });
+
+    glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 }
 
 void Window::OnUpdate()

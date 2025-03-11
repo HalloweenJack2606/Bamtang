@@ -54,13 +54,15 @@ void Camera::RecalculateProjection()
 
 void Camera::RecalculateView()
 {
-    auto position = m_Position;
-    auto rotation = m_Rotation;
+    glm::quat orientation = glm::quat(glm::vec3(glm::radians(m_Rotation.x),
+                                                glm::radians(m_Rotation.y),
+                                                glm::radians(m_Rotation.z)));
 
-    glm::quat quat = glm::quat(vec3(-rotation.z, -rotation.y, -rotation.x));
+    m_Front = glm::normalize(orientation * glm::vec3(0.0f, 0.0f, -1.0f));
+    m_Right = glm::normalize(orientation * glm::vec3(1.0f, 0.0f, 0.0f));
+    m_Up = glm::normalize(orientation * glm::vec3(0.0f, 1.0f, 0.0f));
 
-    m_ViewMatrix = glm::translate(mat4(1.0f), position) * glm::toMat4(quat);
-    m_ViewMatrix = glm::inverse(m_ViewMatrix);
+    m_ViewMatrix = glm::lookAt(m_Position, m_Position + m_Front, m_Up);
 }
 
 vec2 Camera::ScreenToWorldPoint(const vec2& position)

@@ -15,7 +15,8 @@ public:
 
     void OnUpdate();
 
-    inline void SetPosition(vec3 position) { m_Position = position; }
+    inline void SetPosition(vec3 position) noexcept { m_Position = position; }
+    inline void SetRotation(vec3 rotation) noexcept { m_Rotation = rotation; }
 
     void SetPerspective(float verticalFOV, float nearClip, float farClip);
     void SetOrthographic(float size, float nearClip, float farClip);
@@ -28,6 +29,12 @@ public:
     vec2 ScreenToWorldPoint(const vec2& position);
 
     inline mat4 GetProjectionView() const { return m_Projection * m_ViewMatrix; }
+
+    [[nodiscard]] inline vec3 GetFront() const noexcept { return m_Front; }
+    [[nodiscard]] inline vec3 GetRight() const noexcept { return m_Right; }
+    [[nodiscard]] inline vec3 GetUp() const noexcept { return m_Up; }
+
+    [[nodiscard]] inline vec3 GetPosition() const noexcept { return m_Position; }
 private:
     void RecalculateProjection();
     void RecalculateView();

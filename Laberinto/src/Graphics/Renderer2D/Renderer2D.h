@@ -35,4 +35,6 @@ private:
 
     inline static QuadVertex* s_QuadVertexBufferBase = nullptr;
     inline static QuadVertex* s_QuadVertexBufferPtr = nullptr;
+
+    inline static uint32 s_QuadCount = 0;
 };

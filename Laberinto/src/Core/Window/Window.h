@@ -12,6 +12,7 @@ struct WindowData
     bool bResizable;
 
     std::function<void(int32, int32)> KeyCodeFunc;
+    std::function<void(double, double)> MousePosFun;
 };
 
 class Window

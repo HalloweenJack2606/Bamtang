@@ -6,6 +6,9 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <unordered_map>
+#include <functional>
+#include <queue>
 
 #if PLATFORM_APPLE
     #include <stddef.h> //needed for size_t

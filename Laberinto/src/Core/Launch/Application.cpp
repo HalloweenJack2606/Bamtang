@@ -12,7 +12,7 @@ Application::Application(CommandLineArgs args)
 void Application::Run()
 {
     m_pWindow = new Window();
-    m_pWindow->Init({.Name = "Laberinto 3D", .Width = WINDOW_WIDTH, .Height = WINDOW_HEIGHT});
+    m_pWindow->Init({.Name = "Laberinto 2D", .Width = WINDOW_WIDTH, .Height = WINDOW_HEIGHT});
 
     Renderer2D::Init();
     CubeRenderer::Init();

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\HAL">
+      <UniqueIdentifier>{F21B99C2-DEE8-F3CD-0702-E275F32D295C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Launch">
+      <UniqueIdentifier>{F8FDFB82-64B3-7478-EDA7-6E4F595C6B7C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Window">
+      <UniqueIdentifier>{5581319D-C136-AA92-4A2B-A469B6DFA096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{1653CE33-0220-293F-2B39-17E717655ECD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\CircleRenderer">
+      <UniqueIdentifier>{EE5648BC-5A8E-9053-6398-F476CF4EB74C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\LineRenderer">
+      <UniqueIdentifier>{046CD0EF-70D8-8BEA-39CC-2348A5F7AD52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources">
+      <UniqueIdentifier>{00CCAA35-ECAF-6B8B-5510-66DE4113560D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Shader">
+      <UniqueIdentifier>{A67B2B53-123E-5FDD-5BEE-ED69C7EF37BB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{953A660D-014F-8EBE-CAD0-311E36A48AEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\Codes">
+      <UniqueIdentifier>{928AECF3-FE3F-65E9-8734-5FC0F3E85BED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{AFF4887C-9B2B-8A0D-4418-7010302E060F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\GLM">
+      <UniqueIdentifier>{1EB25CCC-0A7F-B7D7-3398-A57F1FC4EC65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World">
+      <UniqueIdentifier>{4D25640E-B939-8CBF-82BB-2F1FEE8E88F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World\Circle">
+      <UniqueIdentifier>{CE995CCF-BAFC-EB73-6382-242A4FC4B7F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World\World">
+      <UniqueIdentifier>{C4C5770F-307B-F004-B96F-EADB2524E708}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core\CoreMinimal.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\HAL\PlatformDetection.h">
+      <Filter>Core\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Launch\Application.h">
+      <Filter>Core\Launch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Window\Window.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\CircleRenderer\CircleRenderer.h">
+      <Filter>Graphics\CircleRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\LineRenderer\LineRenderer.h">
+      <Filter>Graphics\LineRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Resources\Shader\Shader.h">
+      <Filter>Graphics\Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Codes\ActionCodes.h">
+      <Filter>Input\Codes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Codes\KeyCodes.h">
+      <Filter>Input\Codes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Codes\MouseCodes.h">
+      <Filter>Input\Codes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\GLM\GLMDefinitions.h">
+      <Filter>Math\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Circle\Circle.h">
+      <Filter>World\Circle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\World\World.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Launch\Application.cpp">
+      <Filter>Core\Launch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Window\Window.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EntryPoint.cpp" />
+    <ClCompile Include="src\Graphics\CircleRenderer\CircleRenderer.cpp">
+      <Filter>Graphics\CircleRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\LineRenderer\LineRenderer.cpp">
+      <Filter>Graphics\LineRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Resources\Shader\Shader.cpp">
+      <Filter>Graphics\Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\Circle\Circle.cpp">
+      <Filter>World\Circle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\World\World.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

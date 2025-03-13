@@ -15,5 +15,5 @@ cmake-build-release/
 
 .vs/
 .git/
-**/bin/
+./bin/
 bin-int/

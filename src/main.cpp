@@ -56,5 +56,7 @@ int main()
     const std::string decrypted = decryptMessage(message, freqLang);
 
     std::cout << decrypted << std::endl;
+
+    std::cin.get();
     return 0;
 }

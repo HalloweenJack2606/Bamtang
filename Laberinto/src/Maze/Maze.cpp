@@ -49,7 +49,7 @@ vec2 Maze::FindFarthestFromA() const
     vec2 start = {1, 1};
 
     std::vector<std::vector<uint32>> distances(m_Size, std::vector<uint32>(m_Size, -1));
-    distances[start.x][start.y] = 0;
+    distances[(uint32)start.x][(uint32)start.y] = 0;
 
     std::queue<vec2> queue;
     queue.push(start);
@@ -68,14 +68,14 @@ vec2 Maze::FindFarthestFromA() const
             vec2 next = {current.x + directions[i].x, current.y + directions[i].y};
 
             if (next.x >= 0 && next.x < m_Size && next.y >= 0 && next.y < m_Size &&
-                data[next.x][next.y] == ' ' && distances[next.x][next.y] == -1)
+                data[(uint32)next.x][(uint32)next.y] == ' ' && distances[(uint32)next.x][(uint32)next.y] == -1)
             {
-                distances[next.x][next.y] = distances[current.x][current.y] + 1;
+                distances[(uint32)next.x][(uint32)next.y] = distances[(uint32)current.x][(uint32)current.y] + 1;
                 queue.push(next);
 
-                if (distances[next.x][next.y] > maxDistance)
+                if (distances[(uint32)next.x][(uint32)next.y] > maxDistance)
                 {
-                    maxDistance = distances[next.x][next.y];
+                    maxDistance = distances[(uint32)next.x][(uint32)next.y];
                     furthestPoint = next;
                 }
             }
@@ -92,10 +92,10 @@ bool Maze::IsValid(vec2 position) const
 
 void Maze::SetAt(vec2 position, const char value)
 {
-    data[position.x][position.y] = value;
+    data[(uint32)position.x][(uint32)position.y] = value;
 }
 
 char Maze::At(vec2 position) const
 {
-    return data[position.x][position.y];
+    return data[(uint32)position.x][(uint32)position.y];
 }

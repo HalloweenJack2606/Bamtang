@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Application">
+      <UniqueIdentifier>{F1A4822F-DD9D-A181-06D0-8606F227818D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\HAL">
+      <UniqueIdentifier>{F21B99C2-DEE8-F3CD-0702-E275F32D295C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Window">
+      <UniqueIdentifier>{5581319D-C136-AA92-4A2B-A469B6DFA096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameplay">
+      <UniqueIdentifier>{D5936B32-C160-C63D-EA79-B4E5D6A5FBCB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameplay\Maze">
+      <UniqueIdentifier>{91A6F847-FD66-747E-C6A1-BDFB3221B95A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gameplay\World">
+      <UniqueIdentifier>{4CFAC947-38C8-BD4D-215C-2E740DC999B2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{1653CE33-0220-293F-2B39-17E717655ECD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Renderer">
+      <UniqueIdentifier>{7C6F0F98-E885-0D2E-31FD-984F9D52DEB5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources">
+      <UniqueIdentifier>{00CCAA35-ECAF-6B8B-5510-66DE4113560D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Shader">
+      <UniqueIdentifier>{A67B2B53-123E-5FDD-5BEE-ED69C7EF37BB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Texture">
+      <UniqueIdentifier>{60F13E00-4C01-EBD0-B5BA-4FEFA1E9D969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{953A660D-014F-8EBE-CAD0-311E36A48AEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\Codes">
+      <UniqueIdentifier>{928AECF3-FE3F-65E9-8734-5FC0F3E85BED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{AFF4887C-9B2B-8A0D-4418-7010302E060F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\GLM">
+      <UniqueIdentifier>{1EB25CCC-0A7F-B7D7-3398-A57F1FC4EC65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core\Application\Application.h">
+      <Filter>Core\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\CoreMinimal.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\HAL\PlatformDetection.h">
+      <Filter>Core\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Window\Window.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gameplay\Maze\Maze.h">
+      <Filter>Gameplay\Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gameplay\World\World.h">
+      <Filter>Gameplay\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Renderer\Renderer.h">
+      <Filter>Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Resources\Shader\Shader.h">
+      <Filter>Graphics\Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Resources\Texture\Texture.h">
+      <Filter>Graphics\Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Codes\ActionCodes.h">
+      <Filter>Input\Codes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Codes\KeyCodes.h">
+      <Filter>Input\Codes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Codes\MouseCodes.h">
+      <Filter>Input\Codes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\GLM\GLMDefinitions.h">
+      <Filter>Math\GLM</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Application\Application.cpp">
+      <Filter>Core\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Window\Window.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gameplay\Maze\Maze.cpp">
+      <Filter>Gameplay\Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gameplay\World\World.cpp">
+      <Filter>Gameplay\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Renderer\Renderer.cpp">
+      <Filter>Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Resources\Shader\Shader.cpp">
+      <Filter>Graphics\Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Resources\Texture\Texture.cpp">
+      <Filter>Graphics\Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+</Project>

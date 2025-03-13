@@ -12,3 +12,8 @@ laberinto/vendor/.DS_Store
 # Build directory
 cmake-build-debug/
 cmake-build-release/
+
+.vs/
+.git/
+./bin/
+bin-int/

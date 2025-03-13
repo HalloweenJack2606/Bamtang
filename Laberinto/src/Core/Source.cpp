@@ -33,5 +33,6 @@ int main()
     uint32 size = 11;
     Maze maze = createMaze2D(size);
     maze.Print();
+    std::cin.get();
     return 0;
 }

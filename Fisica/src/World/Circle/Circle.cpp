@@ -28,7 +28,7 @@ void Circle::OnUpdate(float ts)
         velocity.y = -velocity.y * ELASTICITY;
     }
 
-    float speed = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
+    float speed = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y) * ts;
     if (speed > 0.0f) {
         velocity *= (1.0f - FRICTION * 0.1f);
     }

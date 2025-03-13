@@ -17,8 +17,8 @@ project "Cipher"
     language "C++"
     cppdialect "C++20"
     staticruntime "on"
-    targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
     files
     {
         "src/**.h",
